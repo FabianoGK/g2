@@ -49,9 +49,6 @@ SETTINGS_FILE ?= settings_default.h
 
 NEEDS_PRINTF_FLOAT=1
 
-# Now invoke the Motate compile system
-include $(MOTATE_PATH)/Motate.mk
-
 ifeq ($(DEBUG),0)
 	DEVICE_DEFINES += DEBUG=0 IN_DEBUGGER=0
 endif
@@ -64,8 +61,13 @@ endif
 ifeq ($(DEBUG),3)
 	DEVICE_DEFINES += DEBUG=1 IN_DEBUGGER=1 DEBUG_SEMIHOSTING=1
 endif
-#ifeq ($(DEBUG),3)
+#ifeq ($(DEBUG),3) 
 #    DEVICE_DEFINES += DEBUG=1 IN_DEBUGGER=1 DEBUG_SEMIHOSTING=1
 #endif
+
+TOOLS_VERSION = "7u2"
+
+# Now invoke the Motate compile system
+include $(MOTATE_PATH)/Motate.mk
 
 # *** EOF ***
