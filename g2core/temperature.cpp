@@ -400,9 +400,9 @@ struct PID {
 
         float i = _integral * _i_factor;
 
-        if (i > output_max) {
-            _integral = output_max / _i_factor;
-            i = output_max;
+        if (i > PID::output_max) {
+            _integral = PID::output_max / _i_factor;
+            i = PID::output_max;
         }
 
 
@@ -420,7 +420,7 @@ struct PID {
             return 1; //"on"
         }
 
-        return std::min(output_max, p + i - _derivative);
+        return std::min((float)PID::output_max, p + i - _derivative);
     };
 
     bool atSetPoint() {
