@@ -44,7 +44,7 @@
 #include "neopixel.h"
 
 namespace LEDs {
-    NeoPixel<Motate::kLED_RGBWPixelPinNumber, 3> rgbw_leds {NeoPixelOrder::GRBW};
+    NeoPixel<Motate::kLED_RGBWPixelPinNumber, false, 3> rgbw_leds {NeoPixelOrder::GRBW};
 
     RGB_Color_t display_color[3] {{1, 1, 1, 5}, {1, 1, 1, 5}, {1, 1, 1, 5}};
 

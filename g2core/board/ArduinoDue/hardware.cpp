@@ -39,6 +39,32 @@
 #include "MotatePower.h"
 
 
+#define NEOPIXEL_SUPPORT  0
+
+
+#if NEOPIXEL_SUPPORT == 1
+#include "neopixel.h"
+
+namespace LEDs {
+    NeoPixel<Motate::kLED_RGBWPixelPinNumber, false, 12> rgbw_leds {NeoPixelOrder::GRB};
+
+    RGB_Color_t display_color[12] {
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+        {.01, .01, .01, 5},
+    };
+}
+#endif // NEOPIXEL_SUPPORT
+
 /*
  * hardware_init() - lowest level hardware init
  */
@@ -46,7 +72,13 @@
 void hardware_init()
 {
     board_hardware_init();
-	return;
+
+#if NEOPIXEL_SUPPORT == 1
+    for (uint8_t pixel = 0; pixel < LEDs::rgbw_leds.count; pixel++) {
+        LEDs::rgbw_leds.setPixel(pixel, LEDs::display_color[pixel]);
+    }
+    LEDs::rgbw_leds.update();
+#endif // NEOPIXEL_SUPPORT
 }
 
 /*
@@ -55,6 +87,16 @@ void hardware_init()
 
 stat_t hardware_periodic()
 {
+#if NEOPIXEL_SUPPORT == 1
+    for (uint8_t pixel = 0; pixel < LEDs::rgbw_leds.count; pixel++) {
+        if (LEDs::display_color[pixel].update()) {
+            LEDs::rgbw_leds.setPixel(pixel, LEDs::display_color[pixel]);
+        }
+    }
+
+    LEDs::rgbw_leds.update();
+#endif // NEOPIXEL_SUPPORT
+
     return STAT_OK;
 }
 

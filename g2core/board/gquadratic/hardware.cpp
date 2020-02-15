@@ -44,7 +44,7 @@
 #include "canonical_machine.h"
 
 namespace LEDs {
-    NeoPixel<Motate::kLED_RGBWPixelPinNumber, 15> rgbw_leds {NeoPixelOrder::GRB};
+    NeoPixel<Motate::kLED_RGBWPixelPinNumber, false, 15> rgbw_leds {NeoPixelOrder::GRB};
 
     RGB_Color_t display_color[15] {
         {0, 0, 0, 5},
