@@ -564,6 +564,50 @@ const cfgItem_t cfgArray[] = {
     { "p1","p1wph",_fip, 3, pwm_print_p1wph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_1].ccw_phase_hi, P1_CCW_PHASE_HI },
     { "p1","p1pof",_fip, 3, pwm_print_p1pof, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_1].phase_off,    P1_PWM_PHASE_OFF },
 
+    { "p2","p2frq",_fip, 0, pwm_print_p1frq, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].frequency,    P1_PWM_FREQUENCY },
+    { "p2","p2csl",_fip, 0, pwm_print_p1csl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].cw_speed_lo,  P1_CW_SPEED_LO },
+    { "p2","p2csh",_fip, 0, pwm_print_p1csh, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].cw_speed_hi,  P1_CW_SPEED_HI },
+    { "p2","p2cpl",_fip, 3, pwm_print_p1cpl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].cw_phase_lo,  P1_CW_PHASE_LO },
+    { "p2","p2cph",_fip, 3, pwm_print_p1cph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].cw_phase_hi,  P1_CW_PHASE_HI },
+    { "p2","p2wsl",_fip, 0, pwm_print_p1wsl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].ccw_speed_lo, P1_CCW_SPEED_LO },
+    { "p2","p2wsh",_fip, 0, pwm_print_p1wsh, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].ccw_speed_hi, P1_CCW_SPEED_HI },
+    { "p2","p2wpl",_fip, 3, pwm_print_p1wpl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].ccw_phase_lo, P1_CCW_PHASE_LO },
+    { "p2","p2wph",_fip, 3, pwm_print_p1wph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].ccw_phase_hi, P1_CCW_PHASE_HI },
+    { "p2","p2pof",_fip, 3, pwm_print_p1pof, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_2].phase_off,    P1_PWM_PHASE_OFF },
+
+    { "p3","p3frq",_fip, 0, pwm_print_p1frq, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].frequency,    P3_PWM_FREQUENCY },
+    { "p3","p3csl",_fip, 0, pwm_print_p1csl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].cw_speed_lo,  P3_CW_SPEED_LO },
+    { "p3","p3csh",_fip, 0, pwm_print_p1csh, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].cw_speed_hi,  P3_CW_SPEED_HI },
+    { "p3","p3cpl",_fip, 3, pwm_print_p1cpl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].cw_phase_lo,  P3_CW_PHASE_LO },
+    { "p3","p3cph",_fip, 3, pwm_print_p1cph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].cw_phase_hi,  P3_CW_PHASE_HI },
+    { "p3","p3wsl",_fip, 0, pwm_print_p1wsl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].ccw_speed_lo, P3_CCW_SPEED_LO },
+    { "p3","p3wsh",_fip, 0, pwm_print_p1wsh, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].ccw_speed_hi, P3_CCW_SPEED_HI },
+    { "p3","p3wpl",_fip, 3, pwm_print_p1wpl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].ccw_phase_lo, P3_CCW_PHASE_LO },
+    { "p3","p3wph",_fip, 3, pwm_print_p1wph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].ccw_phase_hi, P3_CCW_PHASE_HI },
+    { "p3","p3pof",_fip, 3, pwm_print_p1pof, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_3].phase_off,    P3_PWM_PHASE_OFF },
+
+    { "p4","p4frq",_fip, 0, pwm_print_p1frq, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].frequency,    P4_PWM_FREQUENCY },
+    { "p4","p4csl",_fip, 0, pwm_print_p1csl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].cw_speed_lo,  P4_CW_SPEED_LO },
+    { "p4","p4csh",_fip, 0, pwm_print_p1csh, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].cw_speed_hi,  P4_CW_SPEED_HI },
+    { "p4","p4cpl",_fip, 3, pwm_print_p1cpl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].cw_phase_lo,  P4_CW_PHASE_LO },
+    { "p4","p4cph",_fip, 3, pwm_print_p1cph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].cw_phase_hi,  P4_CW_PHASE_HI },
+    { "p4","p4wsl",_fip, 0, pwm_print_p1wsl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].ccw_speed_lo, P4_CCW_SPEED_LO },
+    { "p4","p4wsh",_fip, 0, pwm_print_p1wsh, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].ccw_speed_hi, P4_CCW_SPEED_HI },
+    { "p4","p4wpl",_fip, 3, pwm_print_p1wpl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].ccw_phase_lo, P4_CCW_PHASE_LO },
+    { "p4","p4wph",_fip, 3, pwm_print_p1wph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].ccw_phase_hi, P4_CCW_PHASE_HI },
+    { "p4","p4pof",_fip, 3, pwm_print_p1pof, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_4].phase_off,    P4_PWM_PHASE_OFF },
+
+    { "p5","p5frq",_fip, 0, pwm_print_p1frq, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].frequency,    P5_PWM_FREQUENCY },
+    { "p5","p5csl",_fip, 0, pwm_print_p1csl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].cw_speed_lo,  P5_CW_SPEED_LO },
+    { "p5","p5csh",_fip, 0, pwm_print_p1csh, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].cw_speed_hi,  P5_CW_SPEED_HI },
+    { "p5","p5cpl",_fip, 3, pwm_print_p1cpl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].cw_phase_lo,  P5_CW_PHASE_LO },
+    { "p5","p5cph",_fip, 3, pwm_print_p1cph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].cw_phase_hi,  P5_CW_PHASE_HI },
+    { "p5","p5wsl",_fip, 0, pwm_print_p1wsl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].ccw_speed_lo, P5_CCW_SPEED_LO },
+    { "p5","p5wsh",_fip, 0, pwm_print_p1wsh, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].ccw_speed_hi, P5_CCW_SPEED_HI },
+    { "p5","p5wpl",_fip, 3, pwm_print_p1wpl, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].ccw_phase_lo, P5_CCW_PHASE_LO },
+    { "p5","p5wph",_fip, 3, pwm_print_p1wph, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].ccw_phase_hi, P5_CCW_PHASE_HI },
+    { "p5","p5pof",_fip, 3, pwm_print_p1pof, get_flt, pwm_set_pwm,(float *)&pwm.c[PWM_5].phase_off,    P5_PWM_PHASE_OFF },
+
     // temperature configs - pid active values (read-only)
     // NOTICE: If you change these PID group keys, you MUST change the get/set functions too!
     { "pid1","pid1p",_fip, 3, tx_print_nul, cm_get_pid_p, set_ro, nullptr, 0 },
@@ -1285,9 +1329,13 @@ const cfgItem_t cfgArray[] = {
     // *** If you adjust the number of entries in a group you must also adjust the count for that group ***
     // *** COUNT STARTS FROM HERE ***
 
-#define FIXED_GROUPS 4
+#define FIXED_GROUPS 8
     { "","sys",_f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },    // system group
     { "","p1", _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },    // PWM 1 group
+    { "","p2", _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },    // PWM 2 group
+    { "","p3", _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },    // PWM 3 group
+    { "","p4", _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },    // PWM 4 group
+    { "","p5", _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },    // PWM 5 group
     { "","sp", _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },    // Spindle group
     { "","co", _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },    // Coolant group
 
@@ -1739,6 +1787,10 @@ static stat_t _do_all(nvObj_t *nv)  // print all parameters
     _do_outputs(nv);
     _do_heaters(nv);                // there are no text mode prints for heaters
     _do_group(nv, (char *)"p1");    // PWM group
+    _do_group(nv, (char *)"p2");    // PWM group
+    _do_group(nv, (char *)"p3");    // PWM group
+    _do_group(nv, (char *)"p4");    // PWM group
+    _do_group(nv, (char *)"p5");    // PWM group
     _do_offsets(nv);                // coordinate system offsets
     return (STAT_COMPLETE);         // STAT_COMPLETE suppresses a second JSON write that would cause a fault
 }

@@ -184,6 +184,12 @@ pin_number kGRBL_FeedHoldPinNumber     = -1;
 pin_number kGRBL_CycleStartPinNumber   = -1;
 pin_number kGRBL_CommonEnablePinNumber = -1;
 
+pin_number kPWMOutput1_PinNumber = kSpindle_PwmPinNumber;
+pin_number kPWMOutput2_PinNumber = kSpindle_Pwm2PinNumber;
+pin_number kPWMOutput3_PinNumber = -1;
+pin_number kPWMOutput4_PinNumber = -1;
+pin_number kPWMOutput5_PinNumber = -1;
+
 // g2ref extensions
 // These first 5 may replace the Spindle and Coolant pins, above
 pin_number kOutput1_PinNumber = 124;  

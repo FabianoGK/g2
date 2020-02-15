@@ -43,6 +43,10 @@ pwmControl_t pwm;
 Motate::PWMOutputPin<Motate::kSpindle_PwmPinNumber>  spindle_pwm_pin {Motate::kNormal, P1_PWM_FREQUENCY};
 Motate::PWMOutputPin<Motate::kSpindle_Pwm2PinNumber> secondary_pwm_pin {Motate::kNormal, P1_PWM_FREQUENCY}; // assume the same frequency, to start with at least
 
+Motate::PWMOutputPin<Motate::kPWMOutput3_PinNumber> output_pwm_pin_3 {Motate::kNormal, P3_PWM_FREQUENCY};
+Motate::PWMOutputPin<Motate::kPWMOutput4_PinNumber> output_pwm_pin_4 {Motate::kNormal, P4_PWM_FREQUENCY};
+Motate::PWMOutputPin<Motate::kPWMOutput5_PinNumber> output_pwm_pin_5 {Motate::kNormal, P5_PWM_FREQUENCY};
+
 /***** PWM code *****/
 /*
  * pwm_init() - initialize pwm channels
@@ -71,10 +75,13 @@ stat_t pwm_set_freq(uint8_t chan, float freq)
     //if (freq < PWM_MIN_FREQ) { return (STAT_INPUT_LESS_THAN_MIN_VALUE);}
     //if (freq > PWM_MAX_FREQ) { return (STAT_INPUT_EXCEEDS_MAX_VALUE);}
 
-    if (chan == PWM_1) {
-        spindle_pwm_pin.setFrequency(freq);
-    } else if (chan == PWM_2) {
-        secondary_pwm_pin.setFrequency(freq);
+    switch (chan) {
+        case PWM_1: spindle_pwm_pin.setFrequency(freq); break;
+        case PWM_2: secondary_pwm_pin.setFrequency(freq); break;
+        case PWM_3: output_pwm_pin_3.setFrequency(freq); break;
+        case PWM_4: output_pwm_pin_4.setFrequency(freq); break;
+        case PWM_5: output_pwm_pin_5.setFrequency(freq); break;
+        default: return (STAT_NO_SUCH_DEVICE);
     }
 
     return (STAT_OK);
@@ -98,16 +105,15 @@ stat_t pwm_set_duty(uint8_t chan, float duty)
     if (duty < 0.0) { return (STAT_INPUT_LESS_THAN_MIN_VALUE);}
     if (duty > 1.0) { return (STAT_INPUT_EXCEEDS_MAX_VALUE);}
 
-    if (chan == PWM_1) {
-//        if (spindle_pwm_pin.isNull()) {
-//            cm_alarm(STAT_ALARM, "attempt to turn on a non-existent spindle");
-//        }
-        spindle_pwm_pin = duty;
-    } else if (chan == PWM_2) {
-//        if (secondary_pwm_pin.isNull()) {
-//            cm_alarm(STAT_ALARM, "attempt to turn on a non-existent spindle");
-//        }
-        secondary_pwm_pin = duty;
+    if (chan > PWMS) { return (STAT_NO_SUCH_DEVICE);}
+
+    switch (chan) {
+        case PWM_1: spindle_pwm_pin = duty; break;
+        case PWM_2: secondary_pwm_pin = duty; break;
+        case PWM_3: output_pwm_pin_3 = duty; break;
+        case PWM_4: output_pwm_pin_4 = duty; break;
+        case PWM_5: output_pwm_pin_5 = duty; break;
+        default: return (STAT_NO_SUCH_DEVICE);
     }
 
     return (STAT_OK);
@@ -118,6 +124,14 @@ stat_t pwm_set_duty(uint8_t chan, float duty)
  * CONFIGURATION AND INTERFACE FUNCTIONS
  * Functions to get and set variables from the cfgArray table
  ***********************************************************************************/
+char _get_pwm_number(nvObj_t *nv) {  // In these functions nv->group == "p1", "p2", or "p3"
+    if (!nv->group[0]) {
+        return nv->token[1];
+    }
+    return nv->group[1];
+}
+
+
 /*
  * pwm_set_pwm() - set generic PWM parameter and reset PWM channels
  *
@@ -126,7 +140,39 @@ stat_t pwm_set_duty(uint8_t chan, float duty)
 stat_t pwm_set_pwm(nvObj_t *nv)
 {
     set_flt(nv);
-    spindle_init();
+
+    uint8_t  chan = _get_pwm_number(nv) - '0';
+    if (chan > PWMS) { return (STAT_NO_SUCH_DEVICE); }
+
+    switch (chan) {
+        case PWM_1:
+             spindle_init();
+             break;
+
+        case PWM_2:
+             pwm_set_freq(PWM_2, P1_PWM_FREQUENCY);
+             pwm_set_duty(PWM_2, P1_PWM_PHASE_OFF);
+             break;
+
+        case PWM_3:
+             pwm_set_freq(PWM_3, P3_PWM_FREQUENCY);
+             pwm_set_duty(PWM_3, P3_PWM_PHASE_OFF);
+             break;
+
+        case PWM_4:
+             pwm_set_freq(PWM_4, P4_PWM_FREQUENCY);
+             pwm_set_duty(PWM_4, P4_PWM_PHASE_OFF);
+             break;
+
+        case PWM_5:
+             pwm_set_freq(PWM_5, P5_PWM_FREQUENCY);
+             pwm_set_duty(PWM_5, P5_PWM_PHASE_OFF);
+             break;
+
+        default:
+             return (STAT_NO_SUCH_DEVICE);
+    }
+
     return(STAT_OK);
 }
 

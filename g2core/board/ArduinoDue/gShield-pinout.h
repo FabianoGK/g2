@@ -231,6 +231,11 @@ pin_number kOutputSAFE_PinNumber   = -1;  // SAFE signal
 pin_number kLED_USBRXPinNumber = 72;
 pin_number kLED_USBTXPinNumber = 73;
 
+pin_number kPWMOutput1_PinNumber = kSpindle_PwmPinNumber;
+pin_number kPWMOutput2_PinNumber = kSpindle_Pwm2PinNumber;
+pin_number kPWMOutput3_PinNumber = -1;
+pin_number kPWMOutput4_PinNumber = -1;
+pin_number kPWMOutput5_PinNumber = -1;
 
 pin_number kOutput1_PinNumber = -1;  // DO_1: Extruder1_PWM
 pin_number kOutput2_PinNumber = -1;  // DO_2: Extruder2_PWM

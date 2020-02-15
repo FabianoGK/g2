@@ -1105,6 +1105,99 @@
 #define P1_PWM_PHASE_OFF            0.1
 #endif
 
+#ifndef P3_PWM_FREQUENCY
+#define P3_PWM_FREQUENCY            100                   // in Hz
+#endif
+#ifndef P3_CW_SPEED_LO
+#define P3_CW_SPEED_LO              0                     // (arbitrary units)
+#endif
+#ifndef P3_CW_SPEED_HI
+#define P3_CW_SPEED_HI              1000
+#endif
+#ifndef P3_CW_PHASE_LO
+#define P3_CW_PHASE_LO              0.0                   // phase [0..1]
+#endif
+#ifndef P3_CW_PHASE_HI
+#define P3_CW_PHASE_HI              1.0
+#endif
+#ifndef P3_CCW_SPEED_LO
+#define P3_CCW_SPEED_LO             0
+#endif
+#ifndef P3_CCW_SPEED_HI
+#define P3_CCW_SPEED_HI             1000
+#endif
+#ifndef P3_CCW_PHASE_LO
+#define P3_CCW_PHASE_LO             0.0
+#endif
+#ifndef P3_CCW_PHASE_HI
+#define P3_CCW_PHASE_HI             1.0
+#endif
+#ifndef P3_PWM_PHASE_OFF
+#define P3_PWM_PHASE_OFF            0.0
+#endif
+
+#ifndef P4_PWM_FREQUENCY
+#define P4_PWM_FREQUENCY            100                   // in Hz
+#endif
+#ifndef P4_CW_SPEED_LO
+#define P4_CW_SPEED_LO              0                  // (arbitrary units)
+#endif
+#ifndef P4_CW_SPEED_HI
+#define P4_CW_SPEED_HI              1000
+#endif
+#ifndef P4_CW_PHASE_LO
+#define P4_CW_PHASE_LO              0.0                    // phase [0..1]
+#endif
+#ifndef P4_CW_PHASE_HI
+#define P4_CW_PHASE_HI              1.0
+#endif
+#ifndef P4_CCW_SPEED_LO
+#define P4_CCW_SPEED_LO             0
+#endif
+#ifndef P4_CCW_SPEED_HI
+#define P4_CCW_SPEED_HI             1000
+#endif
+#ifndef P4_CCW_PHASE_LO
+#define P4_CCW_PHASE_LO             0.0
+#endif
+#ifndef P4_CCW_PHASE_HI
+#define P4_CCW_PHASE_HI             1.0
+#endif
+#ifndef P4_PWM_PHASE_OFF
+#define P4_PWM_PHASE_OFF            0.0
+#endif
+
+#ifndef P5_PWM_FREQUENCY
+#define P5_PWM_FREQUENCY            100                   // in Hz
+#endif
+#ifndef P5_CW_SPEED_LO
+#define P5_CW_SPEED_LO              0                  // (arbitrary units)
+#endif
+#ifndef P5_CW_SPEED_HI
+#define P5_CW_SPEED_HI              1000
+#endif
+#ifndef P5_CW_PHASE_LO
+#define P5_CW_PHASE_LO              0.0                    // phase [0..1]
+#endif
+#ifndef P5_CW_PHASE_HI
+#define P5_CW_PHASE_HI              1.0
+#endif
+#ifndef P5_CCW_SPEED_LO
+#define P5_CCW_SPEED_LO             0
+#endif
+#ifndef P5_CCW_SPEED_HI
+#define P5_CCW_SPEED_HI             1000
+#endif
+#ifndef P5_CCW_PHASE_LO
+#define P5_CCW_PHASE_LO             0.0
+#endif
+#ifndef P5_CCW_PHASE_HI
+#define P5_CCW_PHASE_HI             1.0
+#endif
+#ifndef P5_PWM_PHASE_OFF
+#define P5_PWM_PHASE_OFF            0.0
+#endif
+
 // *** Heater Settings - relevant to 3dp machines *** //
 
 
