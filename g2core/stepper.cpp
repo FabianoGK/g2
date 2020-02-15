@@ -285,6 +285,9 @@ void dda_timer_type::interrupt()
 #if MOTORS > 5
     motor_6.stepEnd();
 #endif
+#if MOTORS > 6
+    motor_7.stepEnd();
+#endif
 
     // process last DDA tick after end of segment
     if (st_run.dda_ticks_downcount == 0) {
@@ -338,6 +341,13 @@ void dda_timer_type::interrupt()
         motor_6.stepStart();        // turn step bit on
         st_run.mot[MOTOR_6].substep_accumulator -= st_run.dda_ticks_X_substeps;
         INCREMENT_ENCODER(MOTOR_6);
+    }
+#endif
+#if MOTORS > 6
+    if ((st_run.mot[MOTOR_7].substep_accumulator += st_run.mot[MOTOR_7].substep_increment) > 0) {
+        motor_7.stepStart();        // turn step bit on
+        st_run.mot[MOTOR_7].substep_accumulator -= st_run.dda_ticks_X_substeps;
+        INCREMENT_ENCODER(MOTOR_7);
     }
 #endif
 
@@ -456,6 +466,9 @@ static void _load_move()
 #endif
 #if (MOTORS > 5)
         motor_6.motionStopped();
+#endif
+#if (MOTORS > 6)
+        motor_7.motionStopped();
 #endif
         return;
     } // if (st_pre.buffer_state != PREP_BUFFER_OWNED_BY_LOADER)
@@ -597,6 +610,24 @@ static void _load_move()
             motor_6.motionStopped();
         }
         ACCUMULATE_ENCODER(MOTOR_6);
+#endif
+#if (MOTORS >= 7)
+        if ((st_run.mot[MOTOR_7].substep_increment = st_pre.mot[MOTOR_7].substep_increment) != 0) {
+            if (st_pre.mot[MOTOR_7].accumulator_correction_flag == true) {
+                st_pre.mot[MOTOR_7].accumulator_correction_flag = false;
+                st_run.mot[MOTOR_7].substep_accumulator *= st_pre.mot[MOTOR_7].accumulator_correction;
+            }
+            if (st_pre.mot[MOTOR_7].direction != st_pre.mot[MOTOR_7].prev_direction) {
+                st_pre.mot[MOTOR_7].prev_direction = st_pre.mot[MOTOR_7].direction;
+                st_run.mot[MOTOR_7].substep_accumulator = -(st_run.dda_ticks_X_substeps + st_run.mot[MOTOR_7].substep_accumulator);
+                motor_7.setDirection(st_pre.mot[MOTOR_7].direction);
+            }
+            motor_7.enable();
+            SET_ENCODER_STEP_SIGN(MOTOR_7, st_pre.mot[MOTOR_7].step_sign);
+        } else {
+            motor_7.motionStopped();
+        }
+        ACCUMULATE_ENCODER(MOTOR_7);
 #endif
 
         //**** do this last ****

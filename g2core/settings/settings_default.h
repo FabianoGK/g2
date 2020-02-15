@@ -412,6 +412,38 @@
 #define M6_POWER_LEVEL              0.0
 #endif
 
+// MOTOR 7
+#ifndef M7_MOTOR_MAP
+#define M7_MOTOR_MAP                AXIS_U_EXTERNAL
+#endif
+#ifndef M7_STEP_ANGLE
+#define M7_STEP_ANGLE               1.8
+#endif
+#ifndef M7_TRAVEL_PER_REV
+#define M7_TRAVEL_PER_REV           360.0
+#endif
+#ifndef M7_MICROSTEPS
+#define M7_MICROSTEPS               8
+#endif
+#ifndef M7_STEPS_PER_UNIT
+#define M7_STEPS_PER_UNIT           0
+#endif
+#ifndef M7_POLARITY
+#define M7_POLARITY                 0
+#endif
+#ifndef M7_ENABLE_POLARITY
+#define M7_ENABLE_POLARITY          IO_ACTIVE_LOW
+#endif
+#ifndef M7_STEP_POLARITY
+#define M7_STEP_POLARITY            IO_ACTIVE_HIGH
+#endif
+#ifndef M7_POWER_MODE
+#define M7_POWER_MODE               MOTOR_DISABLED
+#endif
+#ifndef M7_POWER_LEVEL
+#define M7_POWER_LEVEL              0.0
+#endif
+
 //*****************************************************************************
 //*** Axis Settings ***********************************************************
 //*****************************************************************************

@@ -81,6 +81,11 @@ void kn_inverse_kinematics(const float travel[], float steps[]) {
             steps[MOTOR_6] = joint[axis] * st_cfg.mot[MOTOR_6].steps_per_unit;
         }
 #endif
+#if (MOTORS >= 7)
+        if (st_cfg.mot[MOTOR_7].motor_map == axis) {
+            steps[MOTOR_7] = joint[axis] * st_cfg.mot[MOTOR_7].steps_per_unit;
+        }
+#endif
     }
 
 #else

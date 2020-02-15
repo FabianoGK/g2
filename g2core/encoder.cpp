@@ -111,6 +111,7 @@ void en_take_encoder_snapshot() {
         en.snapshot[MOTOR_4] = en.en[MOTOR_4].encoder_steps + en.en[MOTOR_4].steps_run;
         en.snapshot[MOTOR_5] = en.en[MOTOR_5].encoder_steps + en.en[MOTOR_5].steps_run;
         en.snapshot[MOTOR_6] = en.en[MOTOR_6].encoder_steps + en.en[MOTOR_6].steps_run;
+        en.snapshot[MOTOR_7] = en.en[MOTOR_7].encoder_steps + en.en[MOTOR_7].steps_run;
     */
 }
 

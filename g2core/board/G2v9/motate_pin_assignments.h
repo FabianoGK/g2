@@ -126,6 +126,17 @@ pin_number kSocket6_Microstep_1PinNumber    = -1;  // 66;
 pin_number kSocket6_Microstep_2PinNumber    = -1;  // 67;
 pin_number kSocket6_VrefPinNumber           = -1;  // 68;
 
+pin_number kSocket7_SPISlaveSelectPinNumber = -1;
+pin_number kSocket7_InterruptPinNumber      = -1;
+pin_number kSocket7_StepPinNumber           = -1;
+pin_number kSocket7_DirPinNumber            = -1;
+pin_number kSocket7_EnablePinNumber         = -1;
+pin_number kSocket7_Microstep_0PinNumber    = -1;
+pin_number kSocket7_Microstep_1PinNumber    = -1;
+pin_number kSocket7_Microstep_2PinNumber    = -1;
+pin_number kSocket7_VrefPinNumber           = -1;
+
+
 pin_number kInput1_PinNumber = 100;  // X-Min
 pin_number kInput2_PinNumber = 101;  // X-Max
 pin_number kInput3_PinNumber = 102;  // Y-Min

@@ -193,6 +193,16 @@ pin_number kSocket6_Microstep_1PinNumber    = 46;
 pin_number kSocket6_Microstep_2PinNumber    = -1;
 pin_number kSocket6_VrefPinNumber           = -1;  // 67; //PWMTimer<0>
 
+pin_number kSocket7_SPISlaveSelectPinNumber = -1;
+pin_number kSocket7_InterruptPinNumber      = -1;
+pin_number kSocket7_StepPinNumber           = -1;
+pin_number kSocket7_DirPinNumber            = -1;
+pin_number kSocket7_EnablePinNumber         = -1;
+pin_number kSocket7_Microstep_0PinNumber    = -1;
+pin_number kSocket7_Microstep_1PinNumber    = -1;
+pin_number kSocket7_Microstep_2PinNumber    = -1;
+pin_number kSocket7_VrefPinNumber           = -1;
+
 
 pin_number kInput1_PinNumber = 14;
 pin_number kInput2_PinNumber = 15;

@@ -214,6 +214,9 @@ const cfgItem_t cfgArray[] = {
 #if (MOTORS > 5)
 	{ "pwr","pwr6",_f0, 3, st_print_pwr, st_get_pwr, set_ro, nullptr, 0},
 #endif
+#if (MOTORS > 6)
+	{ "pwr","pwr7",_f0, 3, st_print_pwr, st_get_pwr, set_ro, nullptr, 0},
+#endif
 
     // Motor parameters
     { "1","1ma",_iip, 0, st_print_ma, st_get_ma, st_set_ma, nullptr, M1_MOTOR_MAP },
@@ -297,6 +300,21 @@ const cfgItem_t cfgArray[] = {
     { "6","6sp",_iip, 0, st_print_sp, st_get_sp, st_set_sp, nullptr, M6_STEP_POLARITY },
 //  { "6","6pi",_fip, 3, st_print_pi, st_get_pi, st_set_pi, (float *)&st_cfg.mot[MOTOR_6].power_idle,     M6_POWER_IDLE },
 //  { "6","6mt",_fip, 2, st_print_mt, st_get_mt, st_set_mt, (float *)&st_cfg.mot[MOTOR_6].motor_timeout,  M6_MOTOR_TIMEOUT },
+// >>>>>>> refs/heads/edge
+#endif
+#if (MOTORS >= 7)
+    { "7","7ma",_iip, 0, st_print_ma, st_get_ma, st_set_ma, nullptr, M7_MOTOR_MAP },
+    { "7","7sa",_fip, 3, st_print_sa, st_get_sa, st_set_sa, nullptr, M7_STEP_ANGLE },
+    { "7","7tr",_fipc,5, st_print_tr, st_get_tr, st_set_tr, nullptr, M7_TRAVEL_PER_REV },
+    { "7","7su",_fipi,5, st_print_su, st_get_su, st_set_su, nullptr, M7_STEPS_PER_UNIT },
+    { "7","7mi",_iip, 0, st_print_mi, st_get_mi, st_set_mi, nullptr, M7_MICROSTEPS },
+    { "7","7po",_iip, 0, st_print_po, st_get_po, st_set_po, nullptr, M7_POLARITY },
+    { "7","7pm",_iip, 0, st_print_pm, st_get_pm, st_set_pm, nullptr, M7_POWER_MODE },
+    { "7","7pl",_fip, 3, st_print_pl, st_get_pl, st_set_pl, nullptr, M7_POWER_LEVEL },
+    { "7","7ep",_iip, 0, st_print_ep, st_get_ep, st_set_ep, nullptr, M7_ENABLE_POLARITY },
+    { "7","7sp",_iip, 0, st_print_sp, st_get_sp, st_set_sp, nullptr, M7_STEP_POLARITY },
+//  { "7","7pi",_fip, 3, st_print_pi, st_get_pi, st_set_pi, (float *)&st_cfg.mot[MOTOR_7].power_idle,     M7_POWER_IDLE },
+//  { "7","7mt",_fip, 2, st_print_mt, st_get_mt, st_set_mt, (float *)&st_cfg.mot[MOTOR_7].motor_timeout,  M7_MOTOR_TIMEOUT },
 // >>>>>>> refs/heads/edge
 #endif
 
@@ -1206,6 +1224,14 @@ const cfgItem_t cfgArray[] = {
     { "_xs","_xs5",_f0, 2, tx_print_flt, get_flt, set_nul, &st_pre.mot[MOTOR_6].corrected_steps, 0 },
     { "_fe","_fe6",_f0, 2, tx_print_flt, get_flt, set_nul, &mr->following_error[MOTOR_6], 0 },
 #endif
+#if (MOTORS >= 7)
+    { "_ts","_ts7",_f0, 2, tx_print_flt, get_flt, set_nul, &mr->target_steps[MOTOR_7], 0 },
+    { "_ps","_ps7",_f0, 2, tx_print_flt, get_flt, set_nul, &mr->position_steps[MOTOR_7], 0 },
+    { "_cs","_cs7",_f0, 2, tx_print_flt, get_flt, set_nul, &mr->commanded_steps[MOTOR_7], 0 },
+    { "_es","_es7",_f0, 2, tx_print_flt, get_flt, set_nul, &mr->encoder_steps[MOTOR_7], 0 },
+    { "_xs","_xs7",_f0, 2, tx_print_flt, get_flt, set_nul, &st_pre.mot[MOTOR_7].corrected_steps, 0 },
+    { "_fe","_fe7",_f0, 2, tx_print_flt, get_flt, set_nul, &mr->following_error[MOTOR_7], 0 },
+#endif
 
 #endif  //  __DIAGNOSTIC_PARAMETERS
 
@@ -1292,6 +1318,9 @@ const cfgItem_t cfgArray[] = {
 #endif
 #if (MOTORS >= 6)
     { "","6",  _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },
+#endif
+#if (MOTORS >= 7)
+    { "","7",  _f0, 0, tx_print_nul, get_grp, set_grp, nullptr, 0 },
 #endif
 
 #define DIGITAL_IN_GROUPS 10
