@@ -184,10 +184,9 @@ void hw_flash_loader(void)
 
 void _get_id(char *id)
 {
-    char *p = id;
     const char *uuid = Motate::UUID;
 
-    Motate::strncpy(p, uuid, Motate::strlen(uuid));
+    Motate::strncpy(id, uuid, std::min(SYS_ID_DIGITS, Motate::strlen(uuid)));
 }
 
 /***** END OF SYSTEM FUNCTIONS *****/
