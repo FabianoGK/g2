@@ -39,14 +39,14 @@
 #include "MotatePower.h"
 
 
-#define NEOPIXEL_SUPPORT  0
+#define NEOPIXEL_SUPPORT  1
 
 
 #if NEOPIXEL_SUPPORT == 1
 #include "neopixel.h"
 
 namespace LEDs {
-    NeoPixel<Motate::kLED_RGBWPixelPinNumber, false, 12> rgbw_leds {NeoPixelOrder::GRB};
+    NeoPixel<Motate::kLED_RGBWPixelPinNumber, true, 12, 400000> rgbw_leds {NeoPixelOrder::GRB};
 
     RGB_Color_t display_color[12] {
         {.01, .01, .01, 5},
