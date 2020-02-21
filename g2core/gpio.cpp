@@ -104,6 +104,15 @@ struct ioDigitalInputExt {
         int8_t pin_value_corrected = (pin_value ^ ((int)in->mode ^ 1));    // correct for NO or NC mode
         in->state = (ioState)pin_value_corrected;
         in->ext_pin_number = ext_pin_number;    // diagnostic only. Not used by code
+
+        if ((in->action == INPUT_ACTION_PANIC) &&
+            (in->state  == INPUT_ACTIVE)) {
+            motor_common_enable_pin.clear();
+
+            char msg[10];
+            sprintf(msg, "input %d", ext_pin_number);
+            cm_panic(STAT_PANIC, msg);
+        }
     }
 
     void pin_changed() {
@@ -186,6 +195,8 @@ struct ioDigitalInputExt {
                 cm_shutdown(STAT_SHUTDOWN, msg);
             }
             if (in->action == INPUT_ACTION_PANIC) {
+                motor_common_enable_pin.clear();
+
                 char msg[10];
                 sprintf(msg, "input %d", ext_pin_number);
                 cm_panic(STAT_PANIC, msg);

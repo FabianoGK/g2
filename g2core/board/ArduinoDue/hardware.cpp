@@ -72,6 +72,7 @@ namespace LEDs {
 void hardware_init()
 {
     board_hardware_init();
+    motor_common_enable_pin.set();
 
 #if NEOPIXEL_SUPPORT == 1
     for (uint8_t pixel = 0; pixel < LEDs::rgbw_leds.count; pixel++) {
@@ -107,11 +108,15 @@ stat_t hardware_periodic()
 
 void hw_hard_reset(void)
 {
+    motor_common_enable_pin.clear();
+
     Motate::System::reset(/*boootloader: */ false); // arg=0 resets the system
 }
 
 void hw_flash_loader(void)
 {
+    motor_common_enable_pin.clear();
+
     Motate::System::reset(/*boootloader: */ true);  // arg=1 erases FLASH and enters FLASH loader
 }
 
