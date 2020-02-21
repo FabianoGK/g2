@@ -160,6 +160,13 @@ ifeq ("$(CONFIG)","EggBot")
     SETTINGS_FILE="settings_eggbot.h"
 endif
 
+ifeq ("$(CONFIG)","customPnP")
+    ifeq ("$(BOARD)","NONE")
+        BOARD=customShield
+    endif
+    SETTINGS_FILE="settings_customPnP.h"
+endif
+
 
 include $(wildcard ./board/$(STAR).mk)
 

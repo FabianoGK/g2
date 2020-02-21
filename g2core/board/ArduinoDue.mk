@@ -43,6 +43,18 @@ ifeq ("$(BOARD)","shopbotShield")
     DEVICE_DEFINES += SETTINGS_FILE=${SETTINGS_FILE}
 endif
 
+ifeq ("$(BOARD)","customShield")
+    # This is a due with a custom shield. We'll use the Due platform, but set defines
+    # for the code to get the pinout right.
+
+    BASE_BOARD = g2core-due
+    DEVICE_DEFINES += MOTATE_BOARD="customShield"
+    DEVICE_DEFINES += SETTINGS_FILE=${SETTINGS_FILE}
+
+    SOURCE_DIRS += device/neopixel
+
+    DEVICE_FLASH_CMD = sudo stty -F /dev/ttyACM1 1200 hup; sudo stty -F /dev/ttyACM1 9600; sudo bossac --port=ttyACM1 -U true -e -w -v -i -b -R $(OUTPUT_BIN).bin
+endif
 
 
 ##########
